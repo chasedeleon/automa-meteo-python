@@ -11,7 +11,7 @@ Le domande si fanno nella chat del progetto, cioè nei commenti della Pull Reque
 | Tappa | Obiettivo | Stato |
 |---|---|---|
 | 0 | Account GitHub e deposito | fatta il 13/10/2026 |
-| 1 | La prima Pull Request accettata | da fare |
+| 1 | La prima Pull Request accettata | fatta il 13/10/2026 |
 | 2 | L'automa gira su Colab | da fare |
 | 3 | Capire il codice | da fare |
 | 4 | L'automa sempre acceso | da fare |
