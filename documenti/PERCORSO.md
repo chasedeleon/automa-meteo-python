@@ -16,7 +16,7 @@ Le domande si fanno nella chat del progetto, cioè nei commenti della Pull Reque
 | 3 | Capire il codice | da fare |
 | 4 | L'automa sempre acceso | fatta il 13/10/2026 |
 | 5 | La dashboard online | fatta il 13/10/2026 |
-| 6 | Fallo tuo | da fare |
+| 6 | Fallo tuo | fatta il 13/10/2026 |
 | 7 | Una misura nuova | da fare |
 | 8 | L'allarme | da fare |
 | 9 | Le statistiche | da fare |
