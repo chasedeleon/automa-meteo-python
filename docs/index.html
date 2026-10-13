@@ -1,7 +1,31 @@
 <!DOCTYPE html>
 <html lang="it">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="refresh" content="60">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="60">
 <title>Stazione meteo - Milano</title>
-<style>body{font-family:'Segoe UI',Tahoma,Arial,sans-serif;background:#1e1e2e;color:#cdd6f4;text-align:center;padding:40px 16px}</style></head>
-<body><h2>STAZIONE METEO - MILANO</h2><p>In attesa della prima lettura dell'automa.</p></body>
+<style>
+  body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background: #1e1e2e; color: #cdd6f4; text-align: center; padding: 30px 16px; }
+  .card { background: #313244; display: inline-block; padding: 24px 40px; border-radius: 16px; border: 2px solid #45475a; max-width: 680px; width: 100%; box-sizing: border-box; }
+  .valore { font-size: 64px; font-weight: bold; color: #89b4fa; margin: 12px 0; }
+  .status { color: #a6e3a1; font-size: 14px; font-weight: bold; }
+  svg { width: 100%; height: auto; margin: 10px 0; }
+  .asse { fill: #a6adc8; font-size: 12px; }
+  table { margin: 10px auto; border-collapse: collapse; }
+  td, th { padding: 4px 14px; border-bottom: 1px solid #45475a; }
+  a { color: #89b4fa; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h2>STAZIONE METEO - MILANO</h2>
+  <p>Ultima lettura: <b>13/10/2026</b> alle <b>12:04:57</b></p>
+  <div class="valore">18,1 °C</div>
+  <p class="status">● Automa attivo - dati dal servizio Open-Meteo</p>
+  <p>Il grafico compare dalla seconda lettura.</p>
+  <table><tr><th>Data</th><th>Ora</th><th>Temperatura</th></tr><tr><td>13/10/2026</td><td>12:04:57</td><td>18,1 °C</td></tr></table>
+  <p><small>Letture salvate: 1 · <a href="database_temperatura.csv">scarica lo storico (CSV per Excel)</a></small></p>
+</div>
+</body>
 </html>
