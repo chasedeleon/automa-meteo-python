@@ -1,0 +1,29 @@
+# L'automa sempre acceso, senza nessun PC: ogni 30 minuti GitHub esegue una lettura,
+# aggiorna lo storico e la dashboard e salva tutto con un commit.
+name: Automa meteo
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  lettura:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Una lettura della temperatura
+        run: python automa_meteo.py --una-volta
+      - name: Salva storico e dashboard
+        run: |
+          git config user.name "automa-meteo"
+          git config user.email "automa-meteo@users.noreply.github.com"
+          git add docs
+          git diff --cached --quiet || git commit -m "Lettura automatica $(TZ=Europe/Rome date '+%d/%m/%Y %H:%M')"
+          git push
