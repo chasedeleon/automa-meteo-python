@@ -1,10 +1,12 @@
 # Il percorso del tuo primo progetto
 
-**Versione 1.0** — 13/10/2026 — Laboratorio di Informatica, prof. Nicola Regge, Piamarta Milano.
+**Versione 1.1** — 13/10/2026 — Laboratorio di Informatica, prof. Nicola Regge, Piamarta Milano.
 
 Dieci tappe, una alla volta. Ogni tappa ha un obiettivo, i passi, il momento in cui è **FATTA**, il commit da fare e una domanda: se sai rispondere a voce, con parole tue, la tappa è davvero tua.
 
 Le domande si fanno nella chat del progetto, cioè nei commenti della Pull Request o di una Issue sul tuo deposito. Il prof e Claude rispondono lì.
+
+**La tua chat di Claude (claude.ai, gratuita):** usala per farti spiegare il codice e gli errori, non per farti scrivere le tappe. La regola è una: quello che metti nel deposito lo devi saper spiegare a voce, con parole tue. Quella chat non è collegata al progetto: quello che il prof deve vedere scrivilo nei commenti su GitHub.
 
 | Tappa | Obiettivo | Stato |
 |---|---|---|
@@ -109,4 +111,5 @@ v1.4: minima, massima e media del giorno
 
 ## Registro delle versioni
 
-1. **v1.0 (13/10/2026):** prima versione del percorso.
+1. **v1.1 (13/10/2026):** come usare la chat gratuita di Claude.
+2. **v1.0 (13/10/2026):** prima versione del percorso.
