@@ -39,6 +39,16 @@ def leggi_temperatura_api():
         print(f"Errore durante il recupero del dato: {errore}")
         return None
 
+def leggi_vento_api():
+    """Chiede la velocità del vento (km/h) allo stesso servizio. Restituisce un numero, oppure None."""
+    try:
+        richiesta = urllib.request.Request(URL_API, headers={"User-Agent": "Automa-Meteo-Scuola"})
+        with urllib.request.urlopen(richiesta, timeout=20) as risposta:
+            dati = json.loads(risposta.read().decode())
+            return float(dati["current_weather"]["windspeed"])
+    except Exception as errore:
+        print(f"Errore durante il recupero del vento: {errore}")
+        return None
 
 def salva_nel_database(data, ora, temperatura):
     """Aggiunge una riga allo storico. Separatore ';' e virgola nei decimali: Excel in italiano li legge come numeri."""
@@ -84,7 +94,7 @@ def grafico_svg(valori):
             f'<polyline fill="none" stroke="#89b4fa" stroke-width="3" points="{" ".join(punti)}"/></svg>')
 
 
-def genera_dashboard():
+def genera_dashboard(vento=None):
     """Scrive la pagina web con l'ultima lettura, il grafico e la tabella delle ultime letture."""
     storico = leggi_storico()
     if not storico:
@@ -118,6 +128,7 @@ def genera_dashboard():
   <p>Ultima lettura: <b>{data}</b> alle <b>{ora}</b></p>
   <div class="valore">{str(temperatura).replace('.', ',')} °C</div>
   <p class="status">● Automa attivo - dati dal servizio Open-Meteo</p>
+    <p>Vento: <b>{vento if vento is not None else '-'} km/h</b></p>
   {grafico_svg([t for _, _, t in ultime])}
   <table><tr><th>Data</th><th>Ora</th><th>Temperatura</th></tr>{righe_tabella}</table>
   <p><small>Letture salvate: {len(storico)} · <a href="database_temperatura.csv">scarica lo storico (CSV per Excel)</a></small></p>
@@ -140,7 +151,7 @@ def una_lettura():
     print(f"-> Temperatura attuale: {temperatura} °C")
     salva_nel_database(data, ora, temperatura)
     print(f"-> Misurazione registrata su '{FILE_DATABASE}'")
-    genera_dashboard()
+    genera_dashboard(leggi_vento_api())
     print(f"-> Dashboard '{FILE_DASHBOARD}' aggiornata!")
     return True
 
