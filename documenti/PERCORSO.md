@@ -14,8 +14,8 @@ Le domande si fanno nella chat del progetto, cioè nei commenti della Pull Reque
 | 1 | La prima Pull Request accettata | fatta il 13/10/2026 |
 | 2 | L'automa gira su Colab | da fare |
 | 3 | Capire il codice | da fare |
-| 4 | L'automa sempre acceso | da fare |
-| 5 | La dashboard online | da fare |
+| 4 | L'automa sempre acceso | fatta il 13/10/2026 |
+| 5 | La dashboard online | fatta il 13/10/2026 |
 | 6 | Fallo tuo | da fare |
 | 7 | Una misura nuova | da fare |
 | 8 | L'allarme | da fare |
