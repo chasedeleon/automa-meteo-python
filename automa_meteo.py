@@ -114,7 +114,7 @@ def genera_dashboard():
 </head>
 <body>
 <div class="card">
-  <h2>STAZIONE METEO - MILANO</h2>
+  <h2>STAZIONE PIAMARTA - MILANO</h2>
   <p>Ultima lettura: <b>{data}</b> alle <b>{ora}</b></p>
   <div class="valore">{str(temperatura).replace('.', ',')} °C</div>
   <p class="status">● Automa attivo - dati dal servizio Open-Meteo</p>
