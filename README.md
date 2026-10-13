@@ -12,6 +12,10 @@ Progetto di stage: un **automa** in Python che legge la temperatura vera di Mila
 | Dashboard | ultima temperatura, grafico, tabella | `docs/index.html` |
 | Automa sempre acceso | GitHub esegue una lettura ogni 30 minuti, senza nessun PC | `.github/workflows/automa.yml` |
 
+## Il percorso
+
+Dieci tappe, una alla volta: `documenti/PERCORSO.md` (anche in PDF). La dispensa con i passi è `documenti/DISPENSA.md`.
+
 ## Dove si vede
 
 Quando GitHub Pages è attivo, la dashboard è su `https://chasedeleon.github.io/automa-meteo-python/` (anche dal telefono).
