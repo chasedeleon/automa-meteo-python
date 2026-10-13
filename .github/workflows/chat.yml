@@ -18,6 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
       - name: Aggiunge il commento a storia/chat.md
         run: |
           python3 - <<'PY'
@@ -32,19 +34,24 @@ jobs:
               chi = "Claude (dall'account " + chi + ")"
           testo = c["body"].replace("\r\n", "\n").strip()
           modifica = " (modificato)" if ev.get("action") == "edited" else ""
-          os.makedirs("storia", exist_ok=True)
-          nuovo = not os.path.exists("storia/chat.md")
-          with open("storia/chat.md", "a", encoding="utf-8") as f:
-              if nuovo:
-                  f.write("# La chat del progetto\n\nOgni messaggio scritto su GitHub (Pull Request e Issue), in ordine di arrivo. Si aggiunge da solo.\n")
+          # il messaggio si prepara a parte: si aggiunge al file solo subito prima del commit
+          with open("/tmp/voce.md", "w", encoding="utf-8") as f:
               f.write(f"\n## {quando:%d/%m/%Y %H:%M} · {chi}{modifica} · #{issue['number']} {issue['title']}\n\n{testo}\n")
           PY
       - name: Salva con un commit
         run: |
           git config user.name "archivio-chat"
           git config user.email "archivio-chat@users.noreply.github.com"
-          git add storia/chat.md
-          git diff --cached --quiet && exit 0
-          git commit -m "Chat: messaggio di ${{ github.event.comment.user.login }}"
-          for i in 1 2 3; do git pull --rebase -q origin "${{ github.event.repository.default_branch }}" && git push -q && exit 0; sleep 3; done
+          RAMO="${{ github.event.repository.default_branch }}"
+          # se intanto è arrivato un altro messaggio, si riparte dall'ultima versione e si aggiunge in fondo: niente conflitti
+          for i in 1 2 3 4 5; do
+            git fetch -q origin "$RAMO" && git reset -q --hard "origin/$RAMO"
+            mkdir -p storia
+            [ -f storia/chat.md ] || printf '# La chat del progetto\n\nOgni messaggio scritto su GitHub (Pull Request e Issue), in ordine di arrivo. Si aggiunge da solo.\n' > storia/chat.md
+            cat /tmp/voce.md >> storia/chat.md
+            git add storia/chat.md
+            git commit -q -m "Chat: messaggio di ${{ github.event.comment.user.login }}"
+            git push -q origin "HEAD:$RAMO" && exit 0
+            sleep $((i * 3))
+          done
           exit 1
